@@ -1,9 +1,9 @@
-import Example from '@/content/pages/prova.mdx'
+import Example from '@/content/pages/introduction.mdx'
 
 export default function Home() {
   return (
     <div className="grid grid-cols-2">
-      <div className="p-4 border-r border-neutral-200 dark:border-neutral-800">
+      <div className="p-4 border-r border-neutral-200">
         <Example />
       </div>
       <div className="p-4">
