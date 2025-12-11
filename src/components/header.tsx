@@ -27,21 +27,21 @@ export function Header() {
       >
         <Link
           href="/projects"
-          className="px-4 py-2 text-sm hover:bg-neutral-200 dark:hover:bg-neutral-800 transition"
+          className="px-4 py-2 text-sm hover:bg-neutral-200 dark:hover:bg-neutral-800 transition border-r border-neutral-200"
         >
           PROJECTS
         </Link>
 
         <Link
           href="/blog"
-          className="px-4 py-2 text-sm hover:bg-neutral-200 dark:hover:bg-neutral-800 transition border-l border-neutral-300 dark:border-neutral-700"
+          className="px-4 py-2 text-sm hover:bg-neutral-200 dark:hover:bg-neutral-800 transition border-r border-neutral-200"
         >
           BLOG
         </Link>
 
         <Link
           href="/interests"
-          className="px-4 py-2 text-sm hover:bg-neutral-200 dark:hover:bg-neutral-800 transition border-l border-neutral-300 dark:border-neutral-700"
+          className="px-4 py-2 text-sm hover:bg-neutral-200 dark:hover:bg-neutral-800 transition border-r border-neutral-200"
         >
           INTERESTS
         </Link>
