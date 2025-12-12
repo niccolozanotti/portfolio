@@ -6,14 +6,17 @@ export default function BlogPage() {
 
   return (
     <div>
-      <h1>Blog</h1>
-      <div className="grid gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2">
         {posts.map((post) => (
-          <Link key={post.slug} href={`/blog/${post.slug}`}>
-            <div className="border p-4 rounded-lg">
-              <h2>{post.title}</h2>
-              <p>{post.description}</p>
-              <span>{post.date}</span>
+          <Link
+            key={post.slug}
+            href={`/blog/${post.slug}`}
+            className="md:[&:nth-child(odd)]:border-r border-neutral-200"
+          >
+            <div className="p-4 border-b border-neutral-200 transition-transform hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:shadow-md">
+              <h4 className="text-base font-semibold mb-2">{post.title}</h4>
+              <p className="text-sm leading-7 text-neutral-800 dark:text-neutral-300 mb-4">{post.description}</p>
+              <span className="text-xs font-medium mb-2">{post.date} • {post.tags.join(", ")}</span>
             </div>
           </Link>
         ))}
