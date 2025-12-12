@@ -29,6 +29,15 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </h3>
     ),
 
+    h4: ({ children, ...props }) => (
+      <h4
+        className="text-lg font-medium mt-4 mb-2"
+        {...props}
+      >
+        {children}
+      </h4>
+    ),
+
     p: ({ children, ...props }) => (
       <p className="leading-7 text-neutral-800 dark:text-neutral-300 mb-4" {...props}>
         {children}
