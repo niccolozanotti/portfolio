@@ -14,8 +14,8 @@ export default async function BlogPostPage({ params }: Props) {
     const { frontmatter, content } = getPostBySlug(slug);
 
     return (
-        <article className="prose py-8">
-            <MDXRemote source={content} components={components} />
-        </article>
+      <div className="p-4">
+        <MDXRemote source={content} components={components} />
+      </div>
     );
 }
