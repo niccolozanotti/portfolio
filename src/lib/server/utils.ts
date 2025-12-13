@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { CATEGORIES } from "@/config/categories";
 
 const POSTS_PATH = path.join(process.cwd(), "src/content/blog");
 
@@ -38,6 +39,26 @@ export function getPostBySlug(slug: string) {
     frontmatter: data as PostFrontmatter,
     content,
   };
+}
+
+export function getCategoryCounts() {
+  const posts = getAllPosts();
+
+  const counts: Record<string, number> = {};
+
+  // Inizializza tutte le categorie a 0
+  CATEGORIES.forEach(cat => {
+    counts[cat] = 0;
+  });
+
+  // Conta i post per categoria
+  posts.forEach(post => {
+    if (counts[post.category] !== undefined) {
+      counts[post.category] += 1;
+    }
+  });
+
+  return counts;
 }
 
 export type PostFrontmatter = {
