@@ -38,6 +38,7 @@ export function getPostBySlug(slug: string) {
   return {
     frontmatter: data as PostFrontmatter,
     content,
+    headings: extractHeadings(content),
   };
 }
 
@@ -63,6 +64,25 @@ export function getAllPostsCount(): number {
   return getPostSlugs().length;
 }
 
+export function extractHeadings(content: string) {
+  const headingRegex = /^(#{2,3})\s+(.*)$/gm;
+  const headings: { level: number; text: string; id: string }[] = [];
+
+  let match;
+  while ((match = headingRegex.exec(content)) !== null) {
+    const level = match[1].length;
+    const text = match[2].trim();
+    const id = text
+      .toLowerCase()
+      .replace(/[^\w]+/g, "-");
+
+    headings.push({ level, text, id });
+  }
+
+  return headings;
+}
+
+
 export type PostFrontmatter = {
   slug: string;
   title: string;
@@ -71,3 +91,4 @@ export type PostFrontmatter = {
   category: string;
   tags: string[]
 };
+

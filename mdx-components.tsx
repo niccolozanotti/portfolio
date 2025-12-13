@@ -1,5 +1,12 @@
 import type { MDXComponents } from "mdx/types";
 
+function slugify(text: string) {
+  return text
+    .toLowerCase()
+    .replace(/[^\w]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
+
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     h1: ({ children, ...props }) => (
@@ -11,24 +18,36 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </h1>
     ),
 
-    h2: ({ children, ...props }) => (
-      <h2
-        className="text-2xl font-semibold mt-8 mb-4 tracking-tight"
-        {...props}
-      >
-        {children}
-      </h2>
-    ),
+    h2: ({ children, ...props }) => {
+      const text = String(children);
+      const id = slugify(text);
 
-    h3: ({ children, ...props }) => (
-      <h3
-        className="text-xl font-semibold mt-6 mb-3"
-        {...props}
-      >
-        {children}
-      </h3>
-    ),
+      return (
+        <h2
+          id={id}
+          className="text-2xl font-semibold mt-8 mb-4 tracking-tight scroll-mt-24"
+          {...props}
+        >
+          {children}
+        </h2>
+      );
+    },
 
+    h3: ({ children, ...props }) => {
+      const text = String(children);
+      const id = slugify(text);
+
+      return (
+        <h3
+          id={id}
+          className="text-xl font-semibold mt-6 mb-3 scroll-mt-24"
+          {...props}
+        >
+          {children}
+        </h3>
+      );
+    },
+     
     h4: ({ children, ...props }) => (
       <h4
         className="text-lg font-medium mt-4 mb-2"
